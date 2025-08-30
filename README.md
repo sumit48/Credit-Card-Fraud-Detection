@@ -1,17 +1,17 @@
 # 💳 Credit Card Fraud Detection Using Machine Learning
 
 # 1. Project Overview
-This project focuses on detecting fraudulent credit card transactions using machine learning. Fraudulent transactions are rare but financially damaging, making early detection crucial for banking security.
-I use the Kaggle Credit Card Fraud dataset, which contains anonymized features (V1–V28, Time, Amount) and a target label Class (0 = legitimate, 1 = fraud).
+This project focuses on detecting fraudulent credit card transactions using machine learning. Fraudulent transactions are rare but financially damaging, making early detection crucial for banking security.<br>
+I use the *Kaggle Credit Card Fraud dataset*, which contains anonymized features (V1–V28, Time, Amount) and a target label Class (0 = legitimate, 1 = fraud).
 
 The system provides two functionalities:
 
-Batch Prediction → Analyze multiple transactions at once
-Single Transaction Prediction → Interactively analyze individual transactions
+- **Batch Prediction** → Analyze multiple transactions at once
+- **Single Transaction Prediction** → Interactively analyze individual transactions
 
 # 2. Installation & Run
 # Clone repository
-git clone https://github.com/<username>/Credit-Card-Fraud-Detection.git
+git clone https://github.com/<username>/Credit-Card-Fraud-Detection.git <br>
 cd Credit-Card-Fraud-Detection
 
 # Install dependencies
@@ -24,67 +24,57 @@ python train_model.py
 streamlit run app.py
 
 The application will be available in your browser at:
-  Local URL: http://localhost:8501
+  Local URL: http://localhost:8501 <br>
   Network URL: http://192.168.0.235:8501
 
 
 # Dataset
-Download the dataset from **[Kaggle Credit Card Fraud Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)**
+Download the dataset from **[Kaggle Credit Card Fraud Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)** <br>
 Place the Kaggle dataset (creditcard.csv) inside the data/ folder before running the project.
 
 # 3. Dataset
-Source: Kaggle – Credit Card Fraud Detection
-Features:
-V1–V28: anonymized PCA components
-Time, Amount: transaction metadata
-Target: Class (0 = legitimate, 1 = fraud)
-Class Imbalance: ~99.8% legitimate vs. ~0.2% fraud
+- Source: Kaggle – Credit Card Fraud Detection
+- Features:
+  - V1–V28: anonymized PCA components
+  - Time, Amount: transaction metadata
+- Target: Class (0 = legitimate, 1 = fraud)
+- Class Imbalance: ~99.8% legitimate vs. ~0.2% fraud
 
 # 4. Data Preprocessing
-Scaling: Time and Amount scaled using StandardScaler
-Feature Order: Inputs arranged as [Time, V1–V28, Amount]
-Train-Test Split: 80/20 split for training and evaluation
-Handling Imbalance: Used ROC AUC and PR AUC instead of accuracy
+- Scaling: Time and Amount scaled using StandardScaler
+- Feature Order: Inputs arranged as [Time, V1–V28, Amount]
+- Train-Test Split: 80/20 split for training and evaluation
+- Handling Imbalance: Used ROC AUC and PR AUC instead of accuracy
 
 # 5. Model Training
-Algorithm: RandomForestClassifier
-Why RandomForest? Robust to imbalance, handles non-linear patterns, outputs probability scores
-Steps:
-Scale Time and Amount
-Train/test split
-Train RandomForest
-Evaluate with metrics
-Save artifacts:
-model.joblib → trained model
-preprocess.joblib → scaler
-metadata.json → threshold
-Example Metrics:
-Accuracy: 1.00
-ROC AUC: 0.976
-PR AUC: 0.873
-F1-score (fraud class): 0.83
+- Algorithm: RandomForestClassifier
+- Why RandomForest? -> Robust to imbalance, handles non-linear patterns, outputs probability scores
+
+ # Steps:
+  1. Scale Time and Amount
+  2. Train/test split
+  3. Train RandomForest
+  4. Evaluate with metrics
+  5. Save artifacts:
+     - model.joblib → trained model
+     - preprocess.joblib → scaler
+     - metadata.json → threshold
+       
+# Example Metrics:
+- Accuracy: 1.00
+- ROC AUC: 0.976
+- PR AUC: 0.873
+- F1-score (fraud class): 0.83
 
 # 6. Streamlit Dashboard
 The interactive Streamlit app (app.py) provides:
-Batch Prediction: Upload a CSV → model predicts and classifies transactions
-Single Prediction: Pre-filled random transaction → fraud probability + prediction (LEGIT or FRAUD)
 
-# 7.Folder Structure & Screenshots
-Credit-Card-Fraud-Detection/
-│
-├── data/
-│   └── creditcard.csv           # Kaggle dataset
-│
-├── models/
-│   ├── model.joblib             # Trained RandomForest model
-│   ├── preprocess.joblib        # Scaler for Time & Amount
-│   └── metadata.json            # Threshold and other info
-│
-├── train_model.py               # Train model & save artifacts
-├── app.py                       # Streamlit app for demo
-└── README.md                    # Project documentation
+- Batch Prediction: Upload a CSV → model predicts and classifies transactions
+- Single Prediction: Pre-filled random transaction → fraud probability + prediction (LEGIT or FRAUD)
 
-**[Dashboard Screenshot](https://github.com/sumit48/Credit-Card-Fraud-Detection/Project Demo/dashboard.png)**
+# 7.Screenshots
+
+**[Dashboard Screenshot](https://github.com/sumit48/Credit-Card-Fraud-Detection/blob/main/Project%20Demo/Dashboard.png)**
 
 # 8. Conclusion
 
